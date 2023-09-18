@@ -45,4 +45,12 @@ public class Employee {
                 ", id=" + id +
                 '}';
     }
+    public String toStringShort() {
+        return "Employee{" +
+                ", id=" + id +
+                "FullName='" + fullName + '\'' +
+                ", salary=" + salary +
+                '}';
+    }
+
 }
