@@ -98,7 +98,7 @@ public class Main {
                 break;
             }
         }
-        for (int i = 0; i < employees.length; i++) {
+        for (int i = 0; i < employees.length; i++) { // сравниваем с первым сотрудником выбранного отдела.
             if (employees[i].getSalary() < employees[index].getSalary() && employees[i].getDepartment() == department) {
                 index = i;
             }
