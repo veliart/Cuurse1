@@ -91,57 +91,36 @@ public class Main {
 
     // Получить в качестве параметра номер отдела и найти сотрудника с минимальной зарплатой.
     private static Employee findLowPaidEmployee(Employee[] employees, int department) {
-        int counter = 0; // Определяем количество сотрудников в выбранном отделе.
-        for (int i = 0; i < employees.length; i++) {
+        int index = -1;
+        for (int i = 0; i < employees.length; i++) { // находим первого сотрудника выбранного отдела, с которым будем проводить сравнение
             if (employees[i].getDepartment() == department) {
-                counter++;
+                index = i;
+                break;
             }
         }
-        Employee[] departmentsEmployee = new Employee[counter]; // Создаем массив c выборкой сотрудников по отделу.
-        int index = 0;
-        for (int i = 0; i < departmentsEmployee.length; i++) {
-            for (int j = index; j < employees.length; j++) {
-                if (employees[j].getDepartment() == department) {
-                    departmentsEmployee[i] = employees[j];
-                    index = j + 1; // +1, чтобы следующую итерацию начать со следующего элемента исходного массива.
-                    break;
-                }
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary() < employees[index].getSalary() && employees[i].getDepartment() == department) {
+                index = i;
             }
         }
-        int index1 = 0;
-        for (int k = 0; k < departmentsEmployee.length; k++) {
-            if (departmentsEmployee[k].getSalary() < departmentsEmployee[index1].getSalary()) {
-                index1 = k;
-            }
-        }
-        return departmentsEmployee[index1];
+        return employees[index];
+        
     }
     // Получить в качестве параметра номер отдела и найти сотрудника с максимальной зарплатой
     private static Employee findHighPaidEmployee(Employee[] employees, int department) {
-        int counter = 0; // Определяем количество сотрудников в выбранном отделе.
-        for (int i = 0; i < employees.length; i++) {
+        int index = -1;
+        for (int i = 0; i < employees.length; i++) { // находим первого сотрудника выбранного отдела, с которым будем проводить сравнение
             if (employees[i].getDepartment() == department) {
-                counter++;
+                index = i;
+                break;
             }
         }
-        Employee[] departmentsEmployee = new Employee[counter]; // Создаем массив c выборкой сотрудников по отделу.
-        int index = 0;
-        for (int i = 0; i < departmentsEmployee.length; i++) {
-            for (int j = index; j < employees.length; j++) {
-                if (employees[j].getDepartment() == department) {
-                    departmentsEmployee[i] = employees[j];
-                    index = j + 1; // +1, чтобы следующую итерацию начать со следующего элемента исходного массива.
-                    break;
-                }
+        for (int i = 0; i < employees.length; i++) {
+            if (employees[i].getSalary() > employees[index].getSalary() && employees[i].getDepartment() == department) {
+                index = i;
             }
         }
-        int index1 = 0;
-        for (int k = 0; k < departmentsEmployee.length; k++) {
-            if (departmentsEmployee[k].getSalary() > departmentsEmployee[index1].getSalary()) {
-                index1 = k;
-            }
-        }
-        return departmentsEmployee[index1];
+        return employees[index];
     }
     // Получить в качестве параметра номер отдела и найти сумму затрат на зарплату по отделу
     private static int findDepartmentSalary(Employee[] employees, int department) {
